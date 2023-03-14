@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <style>
+
+body{
+  text-align: center;
+  }
+h2{
+  font:400 1.5em 'Lato', sans-serif;
+}
+h2, #timer{
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+#timer{
+  display: inline-flex;
+  font:400 0.7em 'Lato', sans-serif;
+  color: #222;
+}
+
+.days, .hours, .minutes, .seconds{
+  padding: 20px;
+}
+
+.numbers {
+  font: 500 3.5em "Rubik", sans-serif;
+  color:  #222;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    
+<h2>Obrona Adama</h2>
+<div id="timer">
+    <div class="days"><div id="days" class="numbers"></div>days</div> 
+    <div class="hours"><div id="hours" class="numbers"></div>hours</div> 
+    <div class="minutes"><div id="minutes" class="numbers"></div>minutes</div> 
+    <div class="seconds"><div id="seconds" class="numbers"></div>seconds</div> 
+</div>
+
+
+
+</body>
+<script>
+const year = new Date().getFullYear();
+const myDate = new Date('March 20, 2023 09:00:00');
+console.log(myDate);
+
+// countdown
+let timer = setInterval(function() {
+
+  // get today's date
+  const today = new Date().getTime();
+
+  // get the difference
+  const diff = myDate - today;
+
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // display
+  document.getElementById("days").innerHTML=days
+  document.getElementById("hours").innerHTML=hours
+  document.getElementById("minutes").innerHTML=minutes
+  document.getElementById("seconds").innerHTML=seconds
+
+
+
+}, 1);
+</script>
+</html>
